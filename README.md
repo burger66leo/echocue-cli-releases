@@ -53,6 +53,8 @@ echocue library import script.md --json
 The CLI talks to the main App's script repository, with no companion service or
 second sync database. `app_update_required` means update the main App;
 `app_unavailable` means open the App and let its library finish loading.
+If it is marked retryable during startup, wait for bootstrap and retry `status`;
+do not create a new mutation request ID to bypass an uncertain write.
 `local_committed` means the Mac saved the script, not that another device received it.
 
 The notarization ticket is stapled to the App bundle. release.json records the
